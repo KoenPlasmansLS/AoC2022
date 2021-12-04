@@ -8,7 +8,7 @@
             return BaseAlgorithm(lines);
         }
 
-        public static string BaseAlgorithm(string[] lines, int windowSize = 1)
+        protected static string BaseAlgorithm(string[] lines, int windowSize = 1)
         { 
             var count = 0;
             var first = true;

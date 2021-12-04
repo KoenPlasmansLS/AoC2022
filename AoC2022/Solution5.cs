@@ -8,7 +8,7 @@
             return BaseAlgorithm(lines);
         }
 
-        public string BaseAlgorithm(string[] lines)
+        private string BaseAlgorithm(string[] lines)
         {
             var nr = lines.Count();
             var columns = lines[0].Count() - 1;

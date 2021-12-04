@@ -8,7 +8,7 @@
             return BaseAlgorithm(lines);
         }
 
-        public string BaseAlgorithm(string[] lines)
+        private string BaseAlgorithm(string[] lines)
         {
             var aim = 0;
             var depth = 0;

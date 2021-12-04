@@ -8,7 +8,7 @@
             return BaseAlgorithm(lines);
         }
 
-        public string BaseAlgorithm(string[] lines)
+        private string BaseAlgorithm(string[] lines)
         {
             List<bool[]> boolLines = ConvertToBoolArrays(lines);
             int oxygen = CalcLevel(boolLines, x => x);
