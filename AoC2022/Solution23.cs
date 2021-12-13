@@ -32,7 +32,7 @@
             return sum;
         }
 
-        private Node GetGraph(string[] lines)
+        public static Node GetGraph(string[] lines)
         {
             var dict = new Dictionary<string, Node>
             {
@@ -50,7 +50,7 @@
             return dict["start"];
         }
 
-        private Node GetOrAdd(Dictionary<string, Node> dict, string nodeName)
+        public static Node GetOrAdd(Dictionary<string, Node> dict, string nodeName)
         {
             if (!dict.ContainsKey(nodeName)) dict.Add(nodeName, new Node { Name = nodeName });
             return dict[nodeName];
