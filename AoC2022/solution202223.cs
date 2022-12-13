@@ -1,6 +1,6 @@
 ﻿namespace AoC2022
 {
-    public class Solution202224 : IProvideSolution
+    public class Solution202223 : IProvideSolution
     {
         public virtual string GetSolution()
         {
@@ -12,16 +12,20 @@
         {
             int[,] map = new int[lines[0].Trim().Length, lines.Length];
             var i = 0;
+            var beginX = 0;
+            var beginY = 0;
             var endX = 0;
             var endY = 0;
             foreach (var line in lines)
             {
                 var j = 0;
-                foreach(var cr in line.Trim())
+                foreach (var cr in line.Trim())
                 {
                     if (cr == 'S')
                     {
-                        map[j, i] = 1;
+                        map[j, i] = 0;
+                        beginX = j;
+                        beginY = i;
                     }
                     else if (cr == 'E')
                     {
@@ -37,27 +41,7 @@
                 }
                 i++;
             }
-            var min = int.MaxValue;
-            for(var i1 = 0; i1 < lines[0].Trim().Length; i1++)
-            {
-                for (var j1 = 0; j1 < lines.Length; j1++)
-                {
-                    if (map[i1, j1] == 1)
-                    {
-                        var currentMin = FindMin(map, i1, j1, endX, endY);
-                        if (currentMin < min)
-                        {
-                            min = currentMin;
-                        }
-                    }
-                }
-            }
-
-            return (min).ToString();
-        }
-
-        private static int FindMin(int[,] map, int beginX, int beginY, int endX, int endY)
-        {
+            var turn = 1;
             var pq = new PriorityQueue<(int, int, int), int>();
             var visited = new List<(int, int)>();
             pq.Enqueue((beginX, beginY, 0), 0);
@@ -66,7 +50,7 @@
                 var t = pq.Dequeue();
                 if (t.Item1 == endX && t.Item2 == endY)
                 {
-                    return t.Item3;
+                    turn = t.Item3;
                     break;
                 }
                 var current = map[t.Item1, t.Item2];
@@ -103,7 +87,8 @@
                     }
                 }
             }
-            return int.MaxValue;
+
+            return (turn).ToString();
         }
     }
 }
